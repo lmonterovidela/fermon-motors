@@ -42,7 +42,7 @@ const styles = {
   },
   dreamContainer: {
     paddingTop: 50,
-    backgroundColor: grey['300'],
+    backgroundColor: grey['0'],
     flexGrow: 1,
     display: 'flex',
     alignItems: 'center',

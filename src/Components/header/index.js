@@ -27,7 +27,7 @@ const AppBarComponent = ({ classes }) => (
   <AppBar position="fixed" color="default" className={classes.appBar}>
     <Toolbar>
       <img
-        src='../../static/logo.png'
+        src='/images/logo.png'
         role="presentation"
         style={{ height: 30, marginRight: 10 }}
       />
