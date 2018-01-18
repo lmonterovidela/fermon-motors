@@ -17,7 +17,6 @@ class Home extends Component {
       <Grid container align="center" justify="center" spacing={0}>
         <Header />
         <GridImg />
-        <Middle />
       </Grid>
     );
   }
