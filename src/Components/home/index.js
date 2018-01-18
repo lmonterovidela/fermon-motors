@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import withStyles from 'material-ui/styles/withStyles';
+import Grid from 'material-ui/Grid';
+
+import styles from '../styles';
 import logo from '../../logo.svg';
-import './style.css';
 import Header from '../header';
-import Grid from '../grid'
+import GridImg from '../grid'
+import Middle from '../middle'
+
 
 class Home extends Component {
   render() {
     return (
-      <div>
-          <div>
-
-              <Header />
-            </div>
-            <div>
-
-              <Grid />
-        </div>
-      </div>
+      <Grid container align="center" justify="center" spacing={0}>
+        <Header />
+        <GridImg />
+        <Middle />
+      </Grid>
     );
   }
 }
 
-export default Home;
+export default withStyles(styles)(Home);

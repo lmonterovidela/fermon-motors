@@ -7,6 +7,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Grid, Row, Col } from 'material-responsive-grid';
 import Home from "./Components/home";
 import Header from "./Components/header";
+import Contact from "./Components/contactUs";
+
 
 const AppRouter = () => {
     return (
@@ -17,6 +19,8 @@ const AppRouter = () => {
                                 <Switch>
                                     <Route exact path="/home" component={Home} />
                                     <Route exact path="/" component={Home} />
+                                    <Route exact path="/contact-us" component={Contact} />
+
                                 </Switch>
                             
         </BrowserRouter>

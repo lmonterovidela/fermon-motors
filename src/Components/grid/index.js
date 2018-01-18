@@ -1,86 +1,96 @@
 import React from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-const styles = {
+const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    display: 'flex',
     flexWrap: 'nowrap',
-    overflowX: 'auto',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
   },
-  titleStyle: {
-    color: 'rgb(0, 188, 212)',
+  title: {
+    color: theme.palette.primary.light,
   },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+  },
+});
+
+const tileData = [
+  {
+    img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+    title: 'Image',
+    author: 'author',
+ },{
+  img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+  title: 'Image',
+  author: 'author',
+},{
+  img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+  title: 'Image',
+  author: 'author',
+},{
+  img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+  title: 'Image',
+  author: 'author',
+},{
+  img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+  title: 'Image',
+  author: 'author',
+},{
+  img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+  title: 'Image',
+  author: 'author',
+},{
+  img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+  title: 'Image',
+  author: 'author',
+},{
+  img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+  title: 'Image',
+  author: 'author',
+},{
+  img: 'http://www.roshfrans.com/wp-content/uploads/2015/06/taller.jpg',
+  title: 'Image',
+  author: 'author',
+},]
+ 
+function SingleLineGridList(props) {
+  const { classes } = props;
+
+  return (
+    <div className={classes.root}>
+      <GridList cellHeight='380' className={classes.gridList} cols={1.1}>
+        {tileData.map(tile => (
+          <GridListTile key={tile.img}>
+            <img src={tile.img} alt={tile.title} />
+            <GridListTileBar
+              title={tile.title}
+              classes={{
+                root: classes.titleBar,
+                title: classes.title,
+              }}
+              
+            />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
+  );
+}
+
+SingleLineGridList.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-const tilesData = [
-  {
-    img: 'http://www.riverviewauto.com.sg/images/p1040760.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'http://21673-presscdn.pagely.netdna-cdn.com/wp-content/uploads/2017/02/List-of-Car-Repair-in-Dubai-Yellow-Pages-Directory.jpg',
-    title: 'Tasty burger',
-    author: 'pashminu',
-  },
-  {
-    img: 'http://www.todoautos.com.pe/portal/images/stories/seguridad/taller-mecanico-auto.jpg',
-    title: 'Camera',
-    author: 'Danson67',
-  },
-  {
-    img: 'http://www.riverviewauto.com.sg/images/p1040760.jpg',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-  {
-    img: 'http://www.riverviewauto.com.sg/images/p1040760.jpg',
-    title: 'Hats',
-    author: 'Hans',
-  },
-  {
-    img: 'http://www.riverviewauto.com.sg/images/p1040760.jpg',
-    title: 'Honey',
-    author: 'fancycravel',
-  },
-  {
-    img: 'http://www.riverviewauto.com.sg/images/p1040760.jpg',
-    title: 'Vegetables',
-    author: 'jill111',
-  },
-  {
-    img: 'http://www.riverviewauto.com.sg/images/p1040760.jpg',
-    title: 'Water plant',
-    author: 'BkrmadtyaKarki',
-  },
-];
-
-/**
- * This example demonstrates the horizontal scrollable single-line grid list of images.
- */
-const GridListExampleSingleLine = () => (
-  <div style={styles.root}>
-    <GridList cellHeight='380' style={styles.gridList} cols={1.1}>
-      {tilesData.map((tile) => (
-        <GridTile
-          key={tile.img}
-          title={tile.title}
-          actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
-          titleStyle={styles.titleStyle}
-          titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-        >
-          <img src={tile.img} />
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
-);
-
-export default GridListExampleSingleLine;
+export default withStyles(styles)(SingleLineGridList);

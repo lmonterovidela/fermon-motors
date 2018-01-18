@@ -1,32 +1,47 @@
+/* application bar de la aplicacion */
+
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { withStyles } from 'material-ui/styles';
+
+import grey from 'material-ui/colors/grey';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import FlatButton from 'material-ui/FlatButton';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 
-function handleClick() {
-  alert('onClick triggered on the title component');
-}
-
-const styles = {
-  title: {
-    cursor: 'pointer',
+const styles = () => ({
+  flex: {
+    flex: 1,
+    fontFamily: 'Pacifico',
+    fontSize: 24,
+    color: '#FFF',
   },
-};
+  appBar: {
+    backgroundColor: grey[900],
+  },
+});
 
-/**
- * This example uses an [IconButton](/#/components/icon-button) on the left, has a clickable `title`
- * through the `onClick` property, and a [FlatButton](/#/components/flat-button) on the right.
- */
-const AppBarExampleIconButton = () => (
-  <AppBar
-    title={<span style={styles.title}>Title</span>}
-    onTitleClick={handleClick}
-    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-    iconElementRight={<FlatButton label="Juan" />}
-
-    iconElementRight={<FlatButton label="Save" />}
-  />
+const AppBarComponent = ({ classes }) => (
+  <AppBar position="fixed" color="default" className={classes.appBar}>
+    <Toolbar>
+      <img
+        src='../../static/logo.png'
+        role="presentation"
+        style={{ height: 30, marginRight: 10 }}
+      />
+      <Typography type="title" className={classes.flex}>
+        Fermon Motors
+      </Typography>
+      <Button href="#description" color="contrast">Descripción</Button>
+      <Button href="#contact" color="contrast">Registro</Button>
+    </Toolbar>
+  </AppBar>
 );
 
-export default AppBarExampleIconButton;
+AppBarComponent.propTypes = {
+  classes: PropTypes.shape({}).isRequired,
+};
+
+export default withStyles(styles)(AppBarComponent);
